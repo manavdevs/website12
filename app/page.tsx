@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import TextHoverEffectDemo from "./TextHoverEffectDemo/page";
 
 export default function Home() {
   const router = useRouter();
