@@ -27,7 +27,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({ onDateTimeChange }) => 
   };
 
   // Handle Time Change
-  const handleTimeChange = (time: string) => {
+  const handleTimeChange = (time: string | null) => {  // Allow time to be null
+    if (time === null) return;  // Handle null case
     setSelectedTime(time);
     if (selectedDate) {
       // Combine selected date and time and pass to parent
@@ -123,7 +124,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({ onDateTimeChange }) => 
               htmlFor="time-picker"
               className="block mb-4 text-lg font-semibold text-gray-700"
             >
-              what Time is milady available:
+              What time is Milady available:
             </label>
             <TimePicker
               id="time-picker"
