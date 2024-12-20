@@ -1,5 +1,5 @@
 'use client';
-import React, {useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { TextHoverEffect } from "../components/ui/text-hover-effect";
 import { CardDemo1 } from "../components/ui/Cards";
@@ -17,10 +17,6 @@ export default function TextHoverEffectDemo() {
     }
   }, [searchParams]);
 
-  if (!username) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <div className="h-[12rem] flex items-center justify-center">
@@ -33,7 +29,7 @@ export default function TextHoverEffectDemo() {
       </div>
       <div className="flex gap-8 px-4 justify-center">
         <CardDemo1 />
-        <CardDemo2 />
+        <CardDemo2/>
         <CardDemo3 />
       </div>
     </>
