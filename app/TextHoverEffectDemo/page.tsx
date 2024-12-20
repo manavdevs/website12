@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { TextHoverEffect } from "../components/ui/text-hover-effect";
 import { CardDemo1 } from "../components/ui/Cards";
