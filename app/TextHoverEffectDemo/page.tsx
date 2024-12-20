@@ -24,6 +24,7 @@ export default function TextHoverEffectDemo() {
   }, [searchParams]);
 
   return (
+    // Wrap the entire component in Suspense to handle loading
     <Suspense fallback={<Loading />}>
       <div className="h-[12rem] flex items-center justify-center">
         <TextHoverEffect text={`Greetings ${username || "Guest"}!`} />
