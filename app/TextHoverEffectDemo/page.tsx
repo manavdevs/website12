@@ -39,11 +39,3 @@ export default function TextHoverEffectDemo() {
     </>
   );
 }
-
-function TextHoverEffectDemoWithSuspense() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <TextHoverEffectDemo />
-    </Suspense>
-  );
-}
