@@ -4,21 +4,23 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
+type ContentItem = {
+  title: string;
+  description: string;
+  content?: React.ReactNode;
+};
+
 export const StickyScroll = ({
   content,
   contentClassName,
 }: {
-  content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode | any;
-  }[];
+  content: ContentItem[];
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
   const [selectedRadio, setSelectedRadio] = useState<string | null>(null); // Store selected radio button value
   const [textFieldValue, setTextFieldValue] = useState<string>(""); // Store text field value
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     container: ref,
     offset: ["start start", "end start"],
