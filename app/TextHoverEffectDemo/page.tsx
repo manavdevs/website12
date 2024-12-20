@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { TextHoverEffect } from "../components/ui/text-hover-effect";
 import { CardDemo1 } from "../components/ui/Cards";
@@ -18,7 +18,7 @@ export default function TextHoverEffectDemo() {
   }, [searchParams]);
 
   if (!username) {
-    return <div>Loading...</div>; // Show loading state if username is not available
+    return <div>Loading...</div>;
   }
 
   return (
@@ -33,9 +33,17 @@ export default function TextHoverEffectDemo() {
       </div>
       <div className="flex gap-8 px-4 justify-center">
         <CardDemo1 />
-        <CardDemo2/>
+        <CardDemo2 />
         <CardDemo3 />
       </div>
     </>
+  );
+}
+
+function TextHoverEffectDemoWithSuspense() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TextHoverEffectDemo />
+    </Suspense>
   );
 }
