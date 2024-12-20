@@ -9,27 +9,22 @@ import { CardDemo1 } from "../components/ui/Cards";
 import { CardDemo2 } from "../components/ui/Cards2";
 import { CardDemo3 } from "../components/ui/Cards3";
 
-const useSearchParamsWithSuspense = async () => {
-  const searchParams = useSearchParams();
-  const usernameParam = searchParams.get('username');
-  return new Promise<string | null>((resolve) => {
-    setTimeout(() => resolve(usernameParam), 1000); // Mock delay
-  });
-};
+// A simple loading component for Suspense
+const Loading = () => <div>Loading...</div>;
 
 export default function TextHoverEffectDemo() {
+  const searchParams = useSearchParams();
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchUsername = async () => {
-      const usernameParam = await useSearchParamsWithSuspense();
+    const usernameParam = searchParams.get('username');
+    if (usernameParam) {
       setUsername(usernameParam);
-    };
-    fetchUsername();
-  }, []);
+    }
+  }, [searchParams]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loading />}>
       <div className="h-[12rem] flex items-center justify-center">
         <TextHoverEffect text={`Greetings ${username || "Guest"}!`} />
       </div>
