@@ -98,74 +98,75 @@ export const StickyScroll = ({
       className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
       ref={ref}
     >
-      <div className="relative flex items-start px-4">
-        <div className="max-w-2xl">
-          {/* Content for each card */}
-          {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-slate-100"
-              >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg text-slate-300 max-w-sm mt-10"
-              >
-                {item.description}
-              </motion.p>
-
-              {/* Radio Button for each card */}
-              <div className="mt-5">
-                <input
-                  type="radio"
-                  id={`radio-${index}`}
-                  name="transport-options"
-                  value={item.title} // Value for the radio button
-                  className="mr-2"
-                  onChange={(e) => setSelectedRadio(e.target.value)} // Update selected radio
-                  checked={selectedRadio === item.title}
-                />
-                <label htmlFor={`radio-${index}`} className="text-slate-300">
-                  Select {item.title}
-                </label>
-              </div>
-
-              {/* Text field for the last card */}
-              {index === content.length - 1 && (
+      <form onSubmit={handleSubmit}> {/* Wrap the button with the form */}
+        <div className="relative flex items-start px-4">
+          <div className="max-w-2xl">
+            {/* Content for each card */}
+            {content.map((item, index) => (
+              <div key={item.title + index} className="my-20">
+                <motion.h2
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-2xl font-bold text-slate-100"
+                >
+                  {item.title}
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-kg text-slate-300 max-w-sm mt-10"
+                >
+                  {item.description}
+                </motion.p>
+  
+                {/* Radio Button for each card */}
                 <div className="mt-5">
-                  <textarea
-                    id="last-card-text"
-                    className="w-full p-2 rounded-md bg-slate-800 text-slate-100"
-                    placeholder="Vroom?"
-                    value={textFieldValue}
-                    onChange={(e) => setTextFieldValue(e.target.value)} // Update text field value
+                  <input
+                    type="radio"
+                    id={`radio-${index}`}
+                    name="transport-options"
+                    value={item.title} // Value for the radio button
+                    className="mr-2"
+                    onChange={(e) => setSelectedRadio(e.target.value)} // Update selected radio
+                    checked={selectedRadio === item.title}
                   />
+                  <label htmlFor={`radio-${index}`} className="text-slate-300">
+                    Select {item.title}
+                  </label>
                 </div>
-              )}
+  
+                {/* Text field for the last card */}
+                {index === content.length - 1 && (
+                  <div className="mt-5">
+                    <textarea
+                      id="last-card-text"
+                      className="w-full p-2 rounded-md bg-slate-800 text-slate-100"
+                      placeholder="Vroom?"
+                      value={textFieldValue}
+                      onChange={(e) => setTextFieldValue(e.target.value)} // Update text field value
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+            <div className="h-[5rem]" />
+            {/* Submit button */}
+            <div className="mt-[1rem]">
+              <button
+                type="submit" // This will trigger the form submission
+                className="px-4 py-2 bg-pink-500 text-white font-bold rounded hover:bg-indigo-500"
+              >
+                God Speed Batman
+              </button>
             </div>
-          ))}
-          <div className="h-[5rem]" />
-          {/* Submit button */}
-          <div className="mt-[1rem]">
-            <button
-              type="submit"
-              className="px-4 py-2 bg-pink-500 text-white font-bold rounded hover:bg-indigo-500"
-              onClick={handleSubmit}
-            >
-              God Speed Batman
-            </button>
           </div>
         </div>
-      </div>
-
+      </form>
+  
       {/* Content box on the right side */}
       <div
         style={{ background: backgroundGradient }}
