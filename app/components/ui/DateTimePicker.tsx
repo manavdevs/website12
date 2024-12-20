@@ -6,18 +6,36 @@ import "react-clock/dist/Clock.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-time-picker/dist/TimePicker.css";
 
-const DateTimePicker: React.FC = () => {
+interface DateTimePickerProps {
+  onDateTimeChange: (dateTime: Date) => void; // Function to handle the selected dateTime
+}
+
+const DateTimePicker: React.FC<DateTimePickerProps> = ({ onDateTimeChange }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [selectedTime, setSelectedTime] = useState<string>("12:00");
 
   // Handle Date Change
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
+    if (date && selectedTime) {
+      // Combine date and time and pass to parent
+      const combinedDateTime = new Date(date);
+      const [hours, minutes] = selectedTime.split(":").map(Number);
+      combinedDateTime.setHours(hours, minutes);
+      onDateTimeChange(combinedDateTime); // Trigger the callback
+    }
   };
 
   // Handle Time Change
   const handleTimeChange = (time: string) => {
     setSelectedTime(time);
+    if (selectedDate) {
+      // Combine selected date and time and pass to parent
+      const combinedDateTime = new Date(selectedDate);
+      const [hours, minutes] = time.split(":").map(Number);
+      combinedDateTime.setHours(hours, minutes);
+      onDateTimeChange(combinedDateTime); // Trigger the callback
+    }
   };
 
   // Handle Submit
