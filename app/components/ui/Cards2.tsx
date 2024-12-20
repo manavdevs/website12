@@ -1,9 +1,12 @@
 "use client";
+import Link from "next/link";
 import { cn } from "../../lib/utils";
 
 export function CardDemo2() {
   return (
+    
     <div className="max-w-xs w-full">
+      <Link href={'/FocusCardDemo'}>
       <div
         className={cn(
           "group w-full cursor-pointer overflow-hidden relative card2 h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
@@ -23,6 +26,8 @@ export function CardDemo2() {
           </p>
         </div>
       </div>
+      </Link>
     </div>
+    
   );
 }
