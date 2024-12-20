@@ -1,6 +1,6 @@
 // app/TextHoverEffectDemo/page.tsx
 
-'use client';
+'use client'; // Ensure the page is client-side only
 
 import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -24,7 +24,6 @@ export default function TextHoverEffectDemo() {
   }, [searchParams]);
 
   return (
-    // Wrap the entire component in Suspense to handle loading
     <Suspense fallback={<Loading />}>
       <div className="h-[12rem] flex items-center justify-center">
         <TextHoverEffect text={`Greetings ${username || "Guest"}!`} />
