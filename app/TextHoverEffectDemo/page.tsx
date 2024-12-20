@@ -1,4 +1,7 @@
+// app/TextHoverEffectDemo/page.tsx
+
 'use client';
+
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { TextHoverEffect } from "../components/ui/text-hover-effect";
@@ -20,7 +23,7 @@ export default function TextHoverEffectDemo() {
   return (
     <>
       <div className="h-[12rem] flex items-center justify-center">
-        <TextHoverEffect text={`Greetings ${username}!`} />
+        <TextHoverEffect text={`Greetings ${username || "Guest"}!`} />
       </div>
       <div className="flex gap-8 px-4 justify-center mb-8">
         <p className="text-[#E73895] font-bold text-2xl md:text-3xl text-center">
@@ -29,7 +32,7 @@ export default function TextHoverEffectDemo() {
       </div>
       <div className="flex gap-8 px-4 justify-center">
         <CardDemo1 />
-        <CardDemo2/>
+        <CardDemo2 />
         <CardDemo3 />
       </div>
     </>
