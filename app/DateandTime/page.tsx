@@ -1,7 +1,6 @@
 'use client';
 import React from "react";
 import DateTimePicker from "../components/ui/DateTimePicker";
-import { BackgroundLines } from "../components/ui/background-lines";
 
 const Home: React.FC = () => {
   const handleDateTimeChange = (dateTime: Date) => {

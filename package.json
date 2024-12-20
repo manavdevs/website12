@@ -11,10 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/material": "^5.8.6",
     "@mui/icons-material": "^6.2.1",
+    "@mui/material": "^6.2.1",
     "@mui/x-date-pickers": "^6.2.1",
-    "@date-io/date-fns": "^2.16.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@tabler/icons-react": "^3.24.0",
     "@tsparticles/engine": "^3.7.1",
@@ -47,8 +46,5 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "resolutions": {
-    "date-fns": "^2.6.0"
   }
 }

@@ -5,7 +5,6 @@ import TimePicker from "react-time-picker";
 import "react-clock/dist/Clock.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-time-picker/dist/TimePicker.css";
-import { BackgroundLines } from "./background-lines";
 
 const DateTimePicker: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());

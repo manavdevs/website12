@@ -21,7 +21,7 @@ export function CardDemo3() {
         "Accept": "application/json",
       },
     })
-      .then((response) => {
+      .then(() => {
         // After successful submission, navigate to the next page in your app
         router.push('/FocusCardDemo'); // Replace with your desired route
       })
