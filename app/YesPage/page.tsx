@@ -52,11 +52,11 @@ export default function Page() {
   );
 }
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   container: {
     fontFamily: 'Arial, sans-serif',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column',  // Ensuring 'flexDirection' is valid
     alignItems: 'center',
     padding: '20px',
     backgroundColor: '#f7f7f7',
