@@ -2,26 +2,34 @@
 
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { TextHoverEffect } from "../components/ui/text-hover-effect";
 import { CardDemo1 } from "../components/ui/Cards";
 import { CardDemo2 } from "../components/ui/Cards2";
 import { CardDemo3 } from "../components/ui/Cards3";
 
-export default function TextHoverEffectDemo() {
+const useSearchParamsWithSuspense = async () => {
   const searchParams = useSearchParams();
+  const usernameParam = searchParams.get('username');
+  return new Promise<string | null>((resolve) => {
+    setTimeout(() => resolve(usernameParam), 1000); // Mock delay
+  });
+};
+
+export default function TextHoverEffectDemo() {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    const usernameParam = searchParams.get('username');
-    if (usernameParam) {
+    const fetchUsername = async () => {
+      const usernameParam = await useSearchParamsWithSuspense();
       setUsername(usernameParam);
-    }
-  }, [searchParams]);
+    };
+    fetchUsername();
+  }, []);
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="h-[12rem] flex items-center justify-center">
         <TextHoverEffect text={`Greetings ${username || "Guest"}!`} />
       </div>
@@ -35,6 +43,6 @@ export default function TextHoverEffectDemo() {
         <CardDemo2 />
         <CardDemo3 />
       </div>
-    </>
+    </Suspense>
   );
 }
